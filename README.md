@@ -28,6 +28,11 @@
 #### 문제점
 - ViewModel 마다 RealmSwift에 접근하는 코드를 반복적으로 사용해, 같은 기능을 하는 코드가 많아지는 문제점 발생
 #### 해결 방안
+- protocol과 DI를 활용해 반복되는 코드를 묶어 코드 재사용성을 증진하고자 했습니다.
+
+<br>
+
+<img width="800" src="https://github.com/ryuchanghwi/WorkoutDoneApp/assets/78063938/6c692027-ba2a-46b4-8ae5-486add1f622f">
 
 ### 2.Mock을 활용한 Realm 테스트와 명확한 테스트를 위한 고민
 #### 문제점
