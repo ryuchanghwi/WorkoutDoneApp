@@ -28,11 +28,125 @@
 #### 문제점
 - ViewModel 마다 RealmSwift에 접근하는 코드를 반복적으로 사용해, 같은 기능을 하는 코드가 많아지는 문제점 발생
 #### 해결 방안
-- protocol과 DI를 활용해 반복되는 코드를 묶어 코드 재사용성을 증진하고자 했습니다.
+- protocol과 DI를 활용해 반복되는 코드를 묶어 코드 재사용성을 높이고자 했습니다.
 
 <br>
 
 <img width="800" src="https://github.com/ryuchanghwi/WorkoutDoneApp/assets/78063938/6c692027-ba2a-46b4-8ae5-486add1f622f">
+
+
+<br>
+
+
+``` swift
+import RealmSwift
+
+protocol DataManager {
+    func createData<T>(data: T)
+    func readData<T: Object>(id: Int, type: T.Type) -> T?
+    func updateData<T: Object>(data: T, updateBlock: (T) -> Void)
+    func deleteData<T>(data: T)
+}
+```
+- Realm에서 사용될 기본적인 `CRUD` 기능을 프로토콜로 정의해주었습니다.
+``` swift
+class RealmManager: DataManager {
+    let realm: Realm
+    
+    init(realm: Realm) {
+        self.realm = realm
+    }
+    
+    // create
+    func createData<T>(data: T) {
+        do {
+            try realm.write {
+                if let dataArray = data as? [Object] {
+                    realm.add(dataArray)
+                } else if let object = data as? Object {
+                    realm.add(object)
+                } else {
+                    print("Unsupported data type: \(type(of: data))")
+                }
+            }
+        } catch {
+            print("Error saving data: \(error)")
+        }
+    }
+    // read
+    func readData<T: Object>(id: Int, type: T.Type) -> T? {
+        let data = realm.object(ofType: type, forPrimaryKey: id)
+        return data
+    }
+    // update
+    func updateData<T: Object>(data: T, updateBlock: (T) -> Void) {
+        do {
+            try realm.write {
+                updateBlock(data)
+            }
+        } catch {
+            print("Error saving data: \(error)")
+        }
+    }
+    // delete
+    func deleteData<T>(data: T) {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                if let data = data as? Object {
+                    realm.delete(data)
+                } else {
+                    print("Unsupported data type: \(type(of: data))")
+                }
+            }
+        } catch {
+            print("Error deleting data: \(error)")
+        }
+    }
+}
+```
+- 프로토콜을 채택해 `CRUD` 기능을 만들어 주었습니다.
+
+``` swift
+class BodyInfoDataManager {
+    let realmManager: RealmManager
+    
+    init(realmManager: RealmManager) {
+        self.realmManager = realmManager
+    }
+    
+    func readBodyInfoData(id: Int) -> BodyInfo? {
+        let bodyInfoData = realmManager.readData(id: id, type: WorkOutDoneData.self)?.bodyInfo
+        return bodyInfoData
+    }
+    
+    func createBodyInfoData(weight: Double?, skeletalMusleMass: Double?, fatPercentage: Double?, date: String, id: Int) {
+        let workoutDoneData = WorkOutDoneData(id: id, date: date)
+        let bodyInfo = BodyInfo()
+        bodyInfo.weight = weight
+        bodyInfo.skeletalMuscleMass = skeletalMusleMass
+        bodyInfo.fatPercentage = fatPercentage
+        workoutDoneData.bodyInfo = bodyInfo
+        realmManager.createData(data: workoutDoneData)
+    }
+    func deleteBodyInfoData(id: Int) {
+        if let workoutDoneData = realmManager.readData(id: id, type: WorkOutDoneData.self) {
+            realmManager.deleteData(data: workoutDoneData.bodyInfo!)
+        }
+    }
+    func updateBodyInfoData(workoutDoneData: WorkOutDoneData, weight: Double?, skeletalMuscleMass: Double?, fatPercentage: Double?) {
+        realmManager.updateData(data: workoutDoneData) { updatedWorkOutDoneData in
+            let bodyInfo = BodyInfo()
+            bodyInfo.weight = weight
+            bodyInfo.skeletalMuscleMass = skeletalMuscleMass
+            bodyInfo.fatPercentage = fatPercentage
+            updatedWorkOutDoneData.bodyInfo = bodyInfo
+            
+        }
+    }
+}
+```
+- `RealmManager`에 의존하며 RealmManager를 통해 각각의 데이터에 접근할 수 있는 객체를 만들 수 있었습니다. 
 
 ### 2.Mock을 활용한 Realm 테스트와 명확한 테스트를 위한 고민
 #### 문제점
