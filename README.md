@@ -63,36 +63,6 @@
 </div>
 
 
-## 🗺 아키텍쳐
-### MVVM(작성중)
-
-
-## 🗂 파일 디렉토리 구조
-```
-─── WorkoutDone
-│   ├── 📁 Resources
-│   │   ├── 📁 Fonts
-│   │   ├── Assets.xcassets
-│   │   ├── LaunchScreen
-│   │   ├── AppDelegate.swift
-│   │   ├── SceneDelegate.swift
-│   │   └── Info.plist
-│   │
-│   ├── 📁 Sources
-│   │   ├── 📁 Presenter
-│   │   │   └── 📁 Scene
-│   │   │       ├── 📁 ViewController
-│   │   │       ├── 📁 ViewModel
-│   │   │       └── 📁 Cells
-│   │   │  
-│   │   ├── 📁 Model
-│   │   ├── 📁 Classes
-│   │   └── 📁 Extensions
-│   │
-│   └── 📁 Utils
-└── 📁 WorkoutDoneTests
-
-```
 
 ## 📝 코드 컨벤션
 
@@ -614,7 +584,34 @@ final class MyViewController: UIViewController, UITableViewDataSource, UITableVi
 
 <br>
 
-## 📚 가용 라이브러리
+# foldering
+```
+─── WorkoutDone
+│   ├── 📁 Resources
+│   │   ├── 📁 Fonts
+│   │   ├── Assets.xcassets
+│   │   ├── LaunchScreen
+│   │   ├── AppDelegate.swift
+│   │   ├── SceneDelegate.swift
+│   │   └── Info.plist
+│   │
+│   ├── 📁 Sources
+│   │   ├── 📁 Presenter
+│   │   │   └── 📁 Scene
+│   │   │       ├── 📁 ViewController
+│   │   │       ├── 📁 ViewModel
+│   │   │       └── 📁 Cells
+│   │   │  
+│   │   ├── 📁 Model
+│   │   ├── 📁 Classes
+│   │   └── 📁 Extensions
+│   │
+│   └── 📁 Utils
+└── 📁 WorkoutDoneTests
+
+```
+
+# 📚 가용 라이브러리
 
 ```
 RxSwift
