@@ -151,7 +151,7 @@ class BodyInfoDataManager {
 ```
 - `RealmManager`에 의존하며 RealmManager를 통해 각각의 데이터에 접근할 수 있는 객체를 만들 수 있었습니다. 
 
-### 2.Mock을 활용한 Realm 테스트와 명확한 테스트를 위한 고민
+### [2.Mock을 활용한 Realm 테스트와 명확한 테스트를 위한 고민](https://declan.tistory.com/85)
 #### 문제점
 
 #### 해결 방안
