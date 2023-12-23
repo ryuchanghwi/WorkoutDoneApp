@@ -155,7 +155,30 @@ class BodyInfoDataManager {
 #### 문제점
 - 가장 중요한 중요한 기능인 Realm을 다루는 코드들이 제대로 동작하는지 일일이 확인해봐야하는 번거로움 존재
 #### 해결 방안
-- `Mock` Realm을 활용해 테스트 코드를 작성해보고자 했습니다. 
+- `Mock` Realm을 활용해 테스트 코드를 작성해보고자 했습니다.
+
+
+``` swift
+protocol RealmProviderProtocol {
+    func makeRealm() throws -> Realm
+}
+```
+- 어떤 Realm 객체를 제공해 줄 것인지 정할 수 있는 코드(실제 서비스 Realm, 테스트용 Realm)
+
+``` swift
+class ProductionRealmProvider: RealmProviderProtocol {
+    func makeRealm() throws -> Realm {
+        return try Realm()
+    }
+}
+
+class MockRealmProvider: RealmProviderProtocol {
+    func makeRealm() throws -> Realm {
+        return try Realm(configuration: Realm.Configuration(inMemoryIdentifier: "testRealm"))
+    }
+}
+```
+- 해당 프로토콜을 채택하며 실제 서비스에 들어가느 Realm인지 테스트용 Realm인지 구별해주었습니다. 
 
 ### 3. 이중 배열에 있는 데이터를 테이블 뷰로 뿌려주기 위한 고민
 #### 문제점
