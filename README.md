@@ -29,6 +29,9 @@
 - ViewModel 마다 RealmSwift에 접근하는 코드를 반복적으로 사용해, 같은 기능을 하는 코드가 많아지는 문제점 발생
 #### 해결 방안
 - protocol과 DI를 활용해 반복되는 코드를 묶어 코드 재사용성을 높이고자 했습니다.
+- 기본적인 CRUD 기능을 가진 프로토콜을 정의
+- 프로토콜을 채택하며 Realm의 CRUD 기능을 가진 RealmManager 생성
+- RealmManager에 의존하는 각각의 데이터에 접근할 수 있는 DataManager 생성
 
 <br>
 
