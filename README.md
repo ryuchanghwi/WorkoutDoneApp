@@ -178,7 +178,32 @@ class MockRealmProvider: RealmProviderProtocol {
     }
 }
 ```
-- 해당 프로토콜을 채택하며 실제 서비스에 들어가느 Realm인지 테스트용 Realm인지 구별해주었습니다. 
+- 해당 프로토콜을 채택하며 실제 서비스에 들어가느 Realm인지 테스트용 Realm인지 구별해주었습니다.
+
+``` swift
+final class BodyInputDataValidatorTest: XCTestCase {
+
+    var sut: BodyInfoDataManager!
+    var realmProvider: MockRealmProvider!
+    var testRealm: Realm!
+    override func setUp() {
+        realmProvider = MockRealmProvider() // Mock Realm을 통해 테스트
+        testRealm = try! realmProvider.makeRealm()
+        let realmManager = RealmManager(realm: testRealm)
+        sut = BodyInfoDataManager(realmManager: realmManager)
+        sut.createBodyInfoData(weight: ExpectedBodyInfoData.weight,
+                               skeletalMusleMass: ExpectedBodyInfoData.skeletalMusleMass,
+                               fatPercentage: ExpectedBodyInfoData.fatPercentage,
+                               date: ExpectedBodyInfoData.date,
+                               id: ExpectedBodyInfoData.id)
+    }
+    override func tearDown() {
+        sut = nil
+        realmProvider = nil
+        testRealm = nil
+    }
+```
+- 테스트 코드 작성 시, `MockRealmProvieer`를 넣어주어 실제 서비스 Realm과 구분하여 테스트를 진행할 수 있었습니다. 
 
 ### 3. 이중 배열에 있는 데이터를 테이블 뷰로 뿌려주기 위한 고민
 #### 문제점
