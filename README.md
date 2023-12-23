@@ -26,7 +26,7 @@
 # ⚠️Trouble Shooting
 ### [1.중복되는 코드를 줄이고 테스트를 더 명확하게 하기 위한 고민](https://declan.tistory.com/84)
 #### 문제점
-
+- ViewModel 마다 RealmSwift에 접근하는 코드를 반복적으로 사용해, 같은 기능을 하는 코드가 많아지는 문제점 발생
 #### 해결 방안
 
 ### 2.Mock을 활용한 Realm 테스트와 명확한 테스트를 위한 고민
