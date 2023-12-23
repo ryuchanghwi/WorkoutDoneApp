@@ -1,39 +1,31 @@
-# 오운완
-
-## 목차
-
-- [🏋🏻 프로젝트 소개](#-프로젝트-소개)
-- [📱 주요 화면 및 기능](#-주요-화면-및-기능)
-- [🗺 아키텍쳐](#-아키텍쳐)
-- [🗂 파일 디렉토리 구조](#-파일-디렉토리-구조)
-- [📝 코드 컨벤션](#-코드-컨벤션)
-- [📚 가용 라이브러리](#-가용-라이브러리)
-- [🧑🏻‍💻 참여자](#-참여자)
-<br/>
 
 ## 🏋🏻 프로젝트 소개
-333
+-  사진, 인바디 정보, 운동 루틴으로 몸의 변화를 쉽게 관찰할 수 있는 헬스 기록 앱
+-  평소 취미인 헬스를 하면서 필요한 기능들을 직접 기획하고 개발한 서비스입니다.
+
+🔗 [앱 다운로드 링크](https://apps.apple.com/kr/app/오운완-눈바디-운동-기록/id6451257136)
   
 <img src="https://github.com/ryuchanghwi/UniDP/assets/78063938/420caa45-5f72-416c-800d-711c416dbf47" width=150></img>&nbsp;&nbsp;<img src="https://github.com/ryuchanghwi/UniDP/assets/78063938/42de5435-6687-4127-a2e0-dd13d59d8ef2" width=150></img>&nbsp;&nbsp;<img src="https://github.com/ryuchanghwi/UniDP/assets/78063938/73aa9111-dfa6-4267-86c3-972cfe0b0416" width=150></img>&nbsp;&nbsp;<img src="https://github.com/ryuchanghwi/UniDP/assets/78063938/2b63af3d-b920-450e-8ce7-2e341dab81a3" width=150></img>&nbsp;&nbsp;<img src="https://github.com/ryuchanghwi/UniDP/assets/78063938/450b2cfb-f4d7-4112-b9ce-6141f751c7a3" width=150></img>
 
-```
- 사진, 인바디 정보, 운동 루틴으로 몸의 변화를 쉽게 관찰할 수 있는 헬스 기록 앱
-```
-🔗 [앱 다운로드 링크](https://apps.apple.com/kr/app/오운완-눈바디-운동-기록/id6451257136)
 
-### 프로젝트 기간
-> 2023.03 ~ 2023.08 (진행중)
+- 진행 기간
+    - 개발 : 2023.03 ~ 2023.08
+- 출시
+    - 1.0.0 : 2023.07.28
+- 기술 스택
+    - iOS : UIKit, SwiftUI, Rxswift, SwiftLint, Charts
+    - Deployment Target : iOS 16.0
+    - SwiftUI의 Charts 프레임워크를 사용하기 위해 16버전을 사용했습니다.
 
+<br>
 
+# Architecture
 
+<br>
 
+# ⚠️Trouble Shooting
 
-### 📱 App Version
-| 날짜 | 버전 |
-|:--|:--|
-| 23.07.28 | `v1.0.0` |
-
-## 📱 주요 화면 및 기능
+# 📱 주요 화면 및 기능
 
 > 🔖 온보딩 플로우 - 앱에 대한 전반적인 설명 후, 온보딩을 넘어가면 다시 나타나지 않아요.
 <div align=leading>
