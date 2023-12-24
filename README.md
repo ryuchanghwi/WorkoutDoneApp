@@ -210,15 +210,6 @@ final class BodyInputDataValidatorTest: XCTestCase {
 ```
 - 테스트 코드 작성 시, `MockRealmProvieer`를 넣어주어 실제 서비스 Realm과 구분하여 테스트를 진행할 수 있었습니다. 
 
-### 3. 이중 배열에 있는 데이터를 테이블 뷰로 뿌려주기 위한 고민
-#### 문제점
-
-#### 해결 방안
-
-### 4. 너무 긴 운동 이름을 불편함 없이 보여주기 위한 고민
-#### 문제점
-
-#### 해결 방안
 
 <br>
 
