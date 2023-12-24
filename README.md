@@ -20,6 +20,11 @@
 <br>
 
 # Architecture
+## MVVM
+- 중복되는 코드를 줄이고 재사용성을 높이고자 했습니다.
+- RealmManager의 테스트 코드를 작성할 수 있게끔 구성했습니다.
+<img width="1152" src="https://github.com/ryuchanghwi/WorkoutDoneApp/assets/78063938/ce3bf847-3fd0-479e-934f-4588430d469e">
+
 
 <br>
 
